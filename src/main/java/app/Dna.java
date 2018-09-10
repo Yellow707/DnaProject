@@ -1,11 +1,10 @@
 package app;
 
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Scanner;
 import java.util.ArrayList;
 
-import java.awt.FlowLayout;
 import javax.swing.*;
 
 
@@ -28,7 +27,8 @@ public class Dna extends JFrame {
     private JPanel panel;
     private JLabel label;
     private JTextField fragmentsNumberTextField;
-    private JButton button;
+    private JButton fragmentsNumberButton;
+    private JButton fragmentsListButton;
     private JList<JTextField> arrayTextFields;
 
     private static int fragmentsNumber;
@@ -45,9 +45,14 @@ public class Dna extends JFrame {
         fragmentsNumberTextField = new JTextField("", 10);
 //        fragmentsNumberTextField.setSize(100, 30);
 
-        button = new JButton();
-        button.setText("Go");
-        button.addActionListener(new ActionListener() {
+        fragmentsNumberButton = new JButton();
+        fragmentsNumberButton.setText("Go");
+
+        fragmentsListButton = new JButton();
+        fragmentsListButton.setText("Go2");
+
+
+        fragmentsNumberButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 fragmentsNumber = Integer.parseInt(fragmentsNumberTextField.getText());
@@ -60,15 +65,31 @@ public class Dna extends JFrame {
 //                    arrayTextFields.add(fragmentsTextField);
                     panel.add(fragmentsTextField);
                 }
+                panel.add(fragmentsListButton);
                 frame.setSize(301, 301);
+            }
+        });
+
+        fragmentsListButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ArrayList<String> fragmentsArray = new ArrayList<>();
+                for (Component component : panel.getComponents()) {
+                    if (component instanceof JTextField) {
+                        JTextField textField = (JTextField) component;
+                        fragmentsArray.add(textField.getText());
+                    }
+                }
+                fragmentsArray.remove(0);
+                System.out.println(fragmentsArray);
+                testFunc(fragmentsArray, fragmentsArray.size());
             }
         });
 //        panel.add(arrayTextFields);
 
         panel.add(label);
         panel.add(fragmentsNumberTextField);
-        panel.add(button);
-
+        panel.add(fragmentsNumberButton);
 
         frame.add(panel);
         frame.setSize(300, 300);
@@ -117,6 +138,7 @@ public class Dna extends JFrame {
         Graph graph = new Graph(fragmentsNumber, fragmentsArray);
         graph.searchPath(0, 0);
         int count = graph.count();
+        graph.printList(); 
         return count;
     }
 }
