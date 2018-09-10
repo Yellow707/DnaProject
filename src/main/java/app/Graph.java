@@ -39,16 +39,16 @@ public final class Graph {
 
     //может быть слева?
     public boolean checkNode(Node a, Node b){
-        String i = a.Fragment(); //получаем фрагменты
-        String j = b.Fragment();
-        if(i.charAt(i.length()-1) == j.charAt(0)) {
+        String fragmentA = a.Fragment(); //получаем фрагменты
+        String fragmentB = b.Fragment();
+        if(fragmentA.charAt(fragmentA.length() - 1) == fragmentB.charAt(0)) {
             return true;
         } else {
-            while (i.length() != 1){
-                if(j.startsWith(i)) {
+            while (fragmentA.length() != 1){
+                if(fragmentB.startsWith(fragmentA)) {
                     return true;
                 } else {
-                    i = i.substring(1);
+                    fragmentA = fragmentA.substring(1);
                 }
             }
             return false;
