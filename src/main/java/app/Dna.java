@@ -28,8 +28,6 @@ public class Dna extends JFrame {
     private JPanel panel;
     private JLabel label;
     private JTextField fragmentsNumberTextField;
-    private JTextField fragmentsNumberTextField;
-    private JTextField fragmentsNumberTextField;
     private JButton button;
     private JList<JTextField> arrayTextFields;
 
@@ -59,11 +57,13 @@ public class Dna extends JFrame {
                 for (int i = 0; i < fragmentsNumber; i++) {
                     JTextField fragmentsTextField = new JTextField("", 10);
                     fragmentsTextFieldArray.add(fragmentsTextField);
-                    arrayTextFields.add(fragmentsTextField);
+//                    arrayTextFields.add(fragmentsTextField);
+                    panel.add(fragmentsTextField);
                 }
+                frame.setSize(301, 301);
             }
         });
-        panel.add(arrayTextFields);
+//        panel.add(arrayTextFields);
 
         panel.add(label);
         panel.add(fragmentsNumberTextField);
