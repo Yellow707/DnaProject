@@ -30,6 +30,7 @@ public class Dna extends JFrame {
     private JButton fragmentsNumberButton;
     private JButton fragmentsListButton;
     private JList<JTextField> arrayTextFields;
+    private JLabel resultLabel;
 
     private static int fragmentsNumber;
 
@@ -40,10 +41,12 @@ public class Dna extends JFrame {
     public Dna() {
         frame = new JFrame("DNA Check");
         panel = new JPanel();
+        resultLabel = new JLabel();
         panel.setLayout(new FlowLayout());
         label = new JLabel("Введите кол-во фрагментов!");
         fragmentsNumberTextField = new JTextField("", 10);
-//        fragmentsNumberTextField.setSize(100, 30);
+
+        resultLabel.setFont(new Font("Times New Roman", Font.BOLD, 24));
 
         fragmentsNumberButton = new JButton();
         fragmentsNumberButton.setText("Go");
@@ -82,7 +85,21 @@ public class Dna extends JFrame {
                 }
                 fragmentsArray.remove(0);
                 System.out.println(fragmentsArray);
-                testFunc(fragmentsArray, fragmentsArray.size());
+                int result = testFunc(fragmentsArray, fragmentsArray.size());
+                if (result == 1) {
+                    resultLabel.setText("Успех!");
+                    resultLabel.setForeground(Color.green);
+                    panel.add(resultLabel);
+                } else if (result == 0) {
+                    resultLabel.setText("Фрагменты не совместимы!");
+                    resultLabel.setForeground(Color.yellow);
+                    panel.add(resultLabel);
+                } else {
+                    resultLabel.setText("Ошибка!");
+                    resultLabel.setForeground(Color.red);
+                    panel.add(resultLabel);
+                }
+                frame.setSize(300, 300);
             }
         });
 //        panel.add(arrayTextFields);
@@ -126,11 +143,19 @@ public class Dna extends JFrame {
 //        System.out.print("\n");
     }
 
+    public static void startApp(){
+        SwingUtilities.invokeLater(new Runnable(){
+            public void run(){
+                new Dna();
+            }
+        });
+    }
+
     public int testFunc(ArrayList<String> fragmentsArray, int fragmentsNumber) {
         for (int i = 0; i < fragmentsNumber; i++ ){
             String fragment = fragmentsArray.get(i);
             for (int j = 0; j < fragment.length(); j++) {
-                if (Character.isLetter(fragment.charAt(j)) == false) {
+                if (!Character.isLetter(fragment.charAt(j))) {
                     return -1;
                 }
             }
@@ -138,7 +163,7 @@ public class Dna extends JFrame {
         Graph graph = new Graph(fragmentsNumber, fragmentsArray);
         graph.searchPath(0, 0);
         int count = graph.count();
-        graph.printList(); 
+        graph.printList();
         return count;
     }
 }

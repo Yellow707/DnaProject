@@ -14,15 +14,9 @@ public class Node {
         return number;
     }
 
-//    public void Num(int value) {
-//        number = value;
-//    }
 
     public String Fragment() {
         return fragment;
     }
 
-//    public void Fragment(String value) {
-//        fragment = value;
-//    }
 }
