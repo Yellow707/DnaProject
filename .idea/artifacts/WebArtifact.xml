@@ -1,0 +1,13 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="WebArtifact">
+    <output-path>$PROJECT_DIR$/out/artifacts/WebArtifact</output-path>
+    <root id="archive" name="WebArtifact.war">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="DnaTest2" />
+        </element>
+      </element>
+      <element id="javaee-facet-resources" facet="DnaTest2/web/Web" />
+    </root>
+  </artifact>
+</component>

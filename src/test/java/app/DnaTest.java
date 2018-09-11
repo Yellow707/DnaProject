@@ -32,7 +32,7 @@ public class DnaTest {
 
     @org.junit.Test
     public void rightFragments() {
-
+        
         Dna dna = new Dna();
 
         ArrayList<String> fragmentsArray = new ArrayList();

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Подключаем XSLT к XML -->
+<?xml-stylesheet type="text/xsl" href="transform.xsl" ?>
+<contacts>
+    <contact type="address">
+        <value>г. Ростов-на-Дону, ул. Пушкина, д. Колотушкина</value>
+        <image>./resources/img/home.png</image>
+        <name>Доп. офис</name>
+    </contact>
+    <contact type="phone">
+        <value>+7 921 987 90 28</value>
+        <image>./resources/img/phone.png</image>
+        <name>Петров Игорь Дмитриевич</name>
+    </contact>
+    <contact type="email">
+        <value>help@wallpapers.com</value>
+        <image>./resources/img/email.png</image>
+        <name>По любым вопросам</name>
+    </contact>
+    <contact type="address">
+        <value>г. Санкт-Петербург, ул. Пушкина, д. Колотушкина</value>
+        <image>./resources/img/home.png</image>
+        <name>Основной офис</name>
+    </contact>
+    <contact type="address">
+        <value>г. Москва,  ул. Пушкина, д. Колотушкина</value>
+        <image>./resources/img/home.png</image>
+        <name>Доп. офис</name>
+    </contact>
+</contacts>
+
