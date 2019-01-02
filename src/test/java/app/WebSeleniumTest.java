@@ -13,7 +13,7 @@ public class WebSeleniumTest {
 
     @Before
     public void setUp () {
-        System.setProperty("webdriver.chrome.driver", "chromedriver");
+        System.setProperty("webdriver.chrome.driver", "WebDrivers/chromedriver");
         driver = new ChromeDriver();
     }
 
