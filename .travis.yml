@@ -1,5 +1,5 @@
 language: java
-install: true
+# install: true
 
 before_script:
   - "export DISPLAY=:99.0"
